@@ -1,0 +1,80 @@
+﻿@typeparam TStep
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="steps-container">
+                <div class="steps d-flex justify-content-between">
+                    @foreach (var step in Steps)
+                    {
+                        <div class="step @(EqualityComparer<TStep>.Default.Equals(step.Id, CurrentStep) ? "active-step" : "")">
+                            <div class="step-title text-center">
+                                <span class="step-number">@step.Order</span>
+                                <div class="step-text">@step.Name</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="stepper-content-container mt-5">
+                @if (CurrentStepContent is not null)
+                {
+                    @CurrentStepContent
+                }
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-dark" @onclick="PreviousStep" disabled="@IsFirstStep">Previous</button>
+                <button class="btn btn-dark" @onclick="NextStep" disabled="@IsLastStep">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public TStep CurrentStep { get; set; }
+    [Parameter] public EventCallback<TStep> OnStepChange { get; set; }
+
+    public List<StepModel<TStep>> Steps { get; set; } = new List<StepModel<TStep>>();
+    public RenderFragment CurrentStepContent { get; set; }
+
+    private bool IsFirstStep => true;//EqualityComparer<TStep>.Default.Equals(CurrentStep, Steps.FirstOrDefault()?.Id);
+    private bool IsLastStep => false;//EqualityComparer<TStep>.Default.Equals(CurrentStep, Steps.LastOrDefault()?.Id);
+
+    protected override void OnParametersSet()
+    {
+        var currentStepData = Steps.FirstOrDefault(step => EqualityComparer<TStep>.Default.Equals(step.Id, CurrentStep));
+        if (currentStepData != null)
+        {
+            CurrentStepContent = currentStepData.Content;
+        }
+    }
+
+    public void AddStep(StepModel<TStep> step)
+    {
+        Steps.Add(step);
+    }
+
+    private void NextStep()
+    {
+        if (!IsLastStep)
+        {
+            var nextIndex = Steps.FindIndex(x => EqualityComparer<TStep>.Default.Equals(x.Id, CurrentStep)) + 1;
+            CurrentStep = Steps[nextIndex].Id;
+            OnStepChange.InvokeAsync(CurrentStep);
+        }
+    }
+
+    private void PreviousStep()
+    {
+        if (!IsFirstStep)
+        {
+            var prevIndex = Steps.FindIndex(x => EqualityComparer<TStep>.Default.Equals(x.Id, CurrentStep)) - 1;
+            CurrentStep = Steps[prevIndex].Id;
+            OnStepChange.InvokeAsync(CurrentStep);
+        }
+    }
+}
+

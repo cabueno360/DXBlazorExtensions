@@ -1,0 +1,9 @@
+﻿<DxLoadingPanel  @bind-Visible="IsLoading"
+                        IsContentBlocked="true"
+                        ApplyBackgroundShading="true"
+                        IndicatorAreaVisible="false"
+                        Text="@Localization[TanslationLibraryKeys.FetchingData]">
+                <div class="card border-light col-md-12">
+    @ChildContent
+</div>
+</DxLoadingPanel>

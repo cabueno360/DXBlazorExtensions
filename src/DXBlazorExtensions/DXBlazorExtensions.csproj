@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	<PropertyGroup>
+		<PackageId>DXBlazorExtensions</PackageId>
+		<Version>24.1.5.004</Version>
+		<Authors>Carlos Bueno</Authors>
+		<RepositoryUrl>https://github.com/cabueno360/DXBlazorExtensions</RepositoryUrl>
+		<PackageTags>DXBlazorExtensions is a powerful library that builds upon DevExpress Blazor, offering new, custom components to enhance web applications. Designed for flexibility and performance, it expands the DevExpress ecosystem, providing developers with innovative tools to create rich, responsive Blazor applications with ease.</PackageTags>
+		<Description>
+			
+		</Description>
+		<PackageProjectUrl>https://github.com/cabueno360/DXBlazorExtensions</PackageProjectUrl>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="DevExpress.Blazor" Version="24.1.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.8" />
+		<PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.8" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.8" />
+		<PackageReference Include="morelinq" Version="4.3.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Update="Localization\CultureLibrary.de.Designer.cs">
+			<DependentUpon>CultureLibrary.de.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</Compile>
+		<Compile Update="Localization\CultureLibrary.fr.Designer.cs">
+			<DependentUpon>CultureLibrary.fr.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</Compile>
+		<Compile Update="Localization\CultureLibrary.pt-PT.Designer.cs">
+			<DependentUpon>CultureLibrary.pt-PT.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</Compile>
+		<Compile Update="Localization\CultureLibrary.lb.Designer.cs">
+			<DependentUpon>CultureLibrary.lb.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</Compile>
+		<Compile Update="Localization\CultureLibrary.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>CultureLibrary.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+</Project>

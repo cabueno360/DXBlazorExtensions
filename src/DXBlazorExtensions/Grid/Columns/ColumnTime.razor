@@ -1,0 +1,13 @@
+﻿<DxGridDataColumn FieldName="@FieldName"
+                  MinWidth="@MinWidth"
+                  Caption="@Caption"
+                  Visible="@IsVisibleSmallScreen(VisibleSmallScreen)">
+    <CellDisplayTemplate>
+        @{
+            if (TimeOnly.TryParse(@context.DisplayText, out var time))
+            {
+                <span>@(time.ToString("HH:mm"))</span>
+            }
+        }
+    </CellDisplayTemplate>
+</DxGridDataColumn>

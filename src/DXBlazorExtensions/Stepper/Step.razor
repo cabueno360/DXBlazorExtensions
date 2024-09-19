@@ -1,0 +1,23 @@
+﻿@typeparam TStep
+
+@code {
+    [CascadingParameter] private Stepper<TStep> Stepper { get; set; }
+
+    [Parameter] public TStep Id { get; set; }
+    [Parameter] public string Name { get; set; }
+    [Parameter] public string Description { get; set; }
+    [Parameter] public int Order { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Stepper.AddStep(new StepModel<TStep>
+            {
+                Id = Id,
+                Name = Name,
+                Description = Description,
+                Order = Order,
+                Content = ChildContent
+            });
+    }
+}

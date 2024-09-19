@@ -1,0 +1,24 @@
+﻿<div class="component-container">
+    <div class="grid-container">
+        <DxLoadingPanel @bind-Visible="IsLoading"
+                        IsContentBlocked="true"
+                        ApplyBackgroundShading="true"
+                        IndicatorAreaVisible="false"
+                        Text="@Localization[TanslationLibraryKeys.FetchingData]">
+            <DxGrid Data="@Data"
+                    PageSize="@PageSize"
+                    ColumnResizeMode="GridColumnResizeMode.NextColumn"
+                    TextWrapEnabled="false">
+                <Columns>
+                    <CascadingValue Value="IsVisibleSmallScreen">
+                        @ChildContent
+                    </CascadingValue>
+                </Columns>
+                
+                <EmptyDataAreaTemplate>
+                    <b>@context.Grid.GetEmptyMessage(Localization)</b>
+                </EmptyDataAreaTemplate>
+            </DxGrid>
+        </DxLoadingPanel>
+    </div>
+</div>

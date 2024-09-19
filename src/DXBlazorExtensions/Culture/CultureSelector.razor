@@ -1,0 +1,12 @@
+﻿@using System.Globalization
+
+@*  aria-label="@Localization[TanslationKeys.SelectLanguage]" *@
+
+<DxMenuItem IconCssClass="@SelectedFlagClass" Context="menu" Position="ItemPosition.End">
+    <Items>
+        <CascadingValue Value="SetSelectedCulture">
+            @ChildContent
+        </CascadingValue>
+    </Items>
+</DxMenuItem>
+

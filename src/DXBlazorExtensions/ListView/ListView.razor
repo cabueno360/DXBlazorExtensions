@@ -1,0 +1,33 @@
+﻿@typeparam TItem
+
+<section aria-labelledby="sessions">
+    <h2 id="grid_view_label">@Label</h2>
+    <div  role="grid" class="mb-4"  aria-labelledby="@Label">
+
+        @foreach (var property in Data)
+        {
+            <div class="container-fluid w-100 @CssClass">
+                <div class="row  mt-4 mb-4 " role="gridcell">
+                    <CascadingValue Value="property">
+                        @ChildContent
+                    </CascadingValue>
+                </div>
+            </div>
+        }
+    </div>
+
+</section>
+
+@code {
+    [Parameter]
+    public string Label { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string CssClass { get; set; }
+
+    [Parameter]
+    public IEnumerable<TItem> Data { get; set; }
+}

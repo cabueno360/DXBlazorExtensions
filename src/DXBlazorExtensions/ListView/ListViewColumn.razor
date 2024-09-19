@@ -1,0 +1,37 @@
+﻿@typeparam TItem
+
+<div class="col-sm-@ColumnSmSize col-lg-@ColumnLSize col-@ColumnXsSize @CssClass" role="gridcell">
+    @if (Property != null && !string.IsNullOrEmpty(FieldName))
+    {
+        @ChildContent(Property)
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string Label { get; set; }
+
+    [Parameter]
+    public RenderFragment<TItem> ChildContent { get; set; }
+
+    [Parameter]
+    public string FieldName { get; set; }
+
+    [Parameter]
+    public string CssClass { get; set; }
+
+    [Parameter]
+    public string ColumnXsSize { get; set; }
+
+    [Parameter]
+    public string ColumnSmSize { get; set; }
+
+    [Parameter]
+    public string ColumnXLSize { get; set; }
+
+    [Parameter]
+    public string ColumnLSize { get; set; }
+
+    [CascadingParameter]
+    public TItem Property { get; set; }
+}

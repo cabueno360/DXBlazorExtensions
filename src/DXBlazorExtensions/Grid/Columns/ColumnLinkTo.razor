@@ -1,0 +1,43 @@
+﻿<DxGridDataColumn 
+        Caption="@Caption" 
+        MinWidth="@MinWidth" 
+        Visible="@IsVisibleSmallScreen(VisibleSmallScreen)">
+    <CellDisplayTemplate>
+        <DxButton RenderStyleMode="@ButtonRenderStyleMode.Text"
+                  RenderStyle="@ButtonRenderStyle.Link"
+                  Text="@LinkLabel"
+                  NavigateUrl="@NavigateUrlPattern.Replace("{0}",GetValueFromDataItem(context.DataItem))"
+                  CssClass="w-100" />
+    </CellDisplayTemplate>
+</DxGridDataColumn>
+
+@code {
+    [Parameter]
+    public string FieldName { get; set; }
+
+    [Parameter]
+    public string Caption { get; set; }
+
+    [Parameter]
+    public int MinWidth { get; set; }
+
+    [Parameter]
+    public string LinkLabel { get; set; }
+
+
+    [Parameter]
+    public string NavigateUrlPattern { get; set; }
+
+    [Parameter]
+    public bool VisibleSmallScreen { get; set; } = true;
+
+    [CascadingParameter]
+    public Func<bool, bool> IsVisibleSmallScreen { get; set; }
+
+
+    private string GetValueFromDataItem(object dataItem)
+    {
+        var propertyInfo = dataItem.GetType().GetProperty(FieldName);
+        return propertyInfo?.GetValue(dataItem)?.ToString() ?? string.Empty;
+    }
+}
