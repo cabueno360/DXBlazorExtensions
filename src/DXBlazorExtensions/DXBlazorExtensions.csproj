@@ -7,7 +7,7 @@
 	</PropertyGroup>
 	<PropertyGroup>
 		<PackageId>DXBlazorExtensions</PackageId>
-		<Version>24.1.5.004</Version>
+		<Version>24.1.5.005</Version>
 		<Authors>Carlos Bueno</Authors>
 		<RepositoryUrl>https://github.com/cabueno360/DXBlazorExtensions</RepositoryUrl>
 		<PackageTags>DXBlazorExtensions is a powerful library that builds upon DevExpress Blazor, offering new, custom components to enhance web applications. Designed for flexibility and performance, it expands the DevExpress ecosystem, providing developers with innovative tools to create rich, responsive Blazor applications with ease.</PackageTags>
