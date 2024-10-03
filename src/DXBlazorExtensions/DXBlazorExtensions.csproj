@@ -7,7 +7,7 @@
 	</PropertyGroup>
 	<PropertyGroup>
 		<PackageId>DXBlazorExtensions</PackageId>
-		<Version>24.1.6.000</Version>
+		<Version>24.2.1.000-alpha</Version>
 		<PackageIcon>blazor.png</PackageIcon>
 		<Authors>Carlos Bueno</Authors>
 		<RepositoryUrl>https://github.com/cabueno360/DXBlazorExtensions</RepositoryUrl>
@@ -24,7 +24,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DevExpress.Blazor" Version="24.1.6" />
+		<PackageReference Include="DevExpress.Blazor" Version="24.2.1-alpha-24260" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.8" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.8" />
